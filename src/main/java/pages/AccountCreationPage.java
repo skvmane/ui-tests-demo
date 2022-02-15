@@ -12,6 +12,7 @@ public class AccountCreationPage extends BasePage {
         super(driver);
     }
 
+    //TBD implement basic selector for similar elements
     //Personal info block elements
     @FindBy(xpath = "//input[@value='1']")
     private WebElement radioMale;
@@ -89,12 +90,12 @@ public class AccountCreationPage extends BasePage {
     @FindBy(id = "submitAccount")
     private WebElement registerButton;
 
-    //Methods
     @Override
     public boolean pageIsDisplayed() {
         return registerButton.isDisplayed();
     }
 
+    //TBD reduce the number of methods by implementing universal-ones
     @Step(value = "Select gender radio button (male)")
     public void selectMaleGender() {
         click(radioMale);
@@ -148,7 +149,6 @@ public class AccountCreationPage extends BasePage {
     public void signForSpecialOffers() {
         if (optinCheckbox.isSelected()) {
             System.out.println("Checkbox is already selected");
-            ;
         } else {
             newsletterCheckbox.click();
         }

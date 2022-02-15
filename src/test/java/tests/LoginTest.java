@@ -17,12 +17,13 @@ public class LoginTest extends BaseTest{
     @Test(testName = "Successful login")
     public void successfulLogin() {
         HomePage homepage = new HomePage(driver);
-        homepage.clickOnSignInButton();
+        MyAccountPage myAccPage = new MyAccountPage(driver);
         AuthenticationPage authPage = new AuthenticationPage(driver);
+
+        homepage.clickOnSignInButton();
         authPage.fillEmailToSignIn(getConfiguration().username());
         authPage.fillPassword(getConfiguration().password());
         authPage.clickOnSubmitButton();
-        MyAccountPage myAccPage = new MyAccountPage(driver);
         assertThat(myAccPage.pageIsDisplayed())
                 .isTrue();
     }

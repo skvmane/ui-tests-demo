@@ -17,15 +17,17 @@ public class RegistrationTest extends BaseTest {
     @Epic(value = "Signing-up")
     @Story(value = "Test for account creation")
     @Test(testName = "Successful registration")
-    public void successfulRegister() throws InterruptedException {
+    public void successfulRegister() {
         User user = new UserDataFactory().create();
-
         HomePage homepage = new HomePage(driver);
-        homepage.clickOnSignInButton();
         AuthenticationPage authPage = new AuthenticationPage(driver);
+        AccountCreationPage createPage = new AccountCreationPage(driver);
+        MyAccountPage myAccPage = new MyAccountPage(driver);
+
+        //TBD move to a feature-level
+        homepage.clickOnSignInButton();
         authPage.fillEmailToCreate(user.getEmail());
         authPage.clickOnCreateButton();
-        AccountCreationPage createPage = new AccountCreationPage(driver);
         assertThat(createPage.pageIsDisplayed())
                 .isTrue();
         createPage.selectMaleGender();
@@ -51,7 +53,6 @@ public class RegistrationTest extends BaseTest {
         createPage.fillMobilePhone(user.getPhoneMobile());
         createPage.fillAlias(user.getAddressAlias());
         createPage.register();
-        MyAccountPage myAccPage = new MyAccountPage(driver);
         assertThat(myAccPage.pageIsDisplayed())
                 .isTrue();
     }

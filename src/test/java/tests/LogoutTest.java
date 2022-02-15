@@ -10,24 +10,24 @@ import pages.MyAccountPage;
 import static config.ConfigManager.getConfiguration;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LogoutTest extends BaseTest{
+public class LogoutTest extends BaseTest {
 
     @Epic(value = "Authorization")
     @Story(value = "Test for logout")
     @Test(testName = "Logout")
     public void successfulLogout() {
         HomePage homepage = new HomePage(driver);
-        homepage.clickOnSignInButton();
+        MyAccountPage myAccPage = new MyAccountPage(driver);
         AuthenticationPage authPage = new AuthenticationPage(driver);
+
+        homepage.clickOnSignInButton();
         authPage.fillEmailToSignIn(getConfiguration().username());
         authPage.fillPassword(getConfiguration().password());
         authPage.clickOnSubmitButton();
-        MyAccountPage myAccPage = new MyAccountPage(driver);
         assertThat(myAccPage.pageIsDisplayed())
                 .isTrue();
         myAccPage.clickOnSignOutButton();
         assertThat(homepage.pageIsDisplayed())
                 .isTrue();
     }
-
 }
