@@ -6,7 +6,7 @@ import lombok.NonNull;
 
 @Builder
 @Getter
-public class User {
+public class UserModel {
     @NonNull
     private final String email;
     @NonNull
@@ -15,11 +15,8 @@ public class User {
     private final String firstName;
     @NonNull
     private final String lastName;
-    @NonNull
     private final int dayOfBirth;
-    @NonNull
     private final int monthOfBirth;
-    @NonNull
     private final int yearOfBirth;
     @NonNull
     private final String company;
@@ -39,19 +36,17 @@ public class User {
     private final String phoneMobile;
     @NonNull
     private final int state;
-    @NonNull
     private final int country;
     @NonNull
     private final String addressAlias;
 
-    public static UserBuilder builder(final String email, final String password) {
-        return new UserBuilder().email(email).password(password);
+    public static UserModelBuilder builder(final String email, final String password) {
+        return new UserModelBuilder().email(email).password(password);
     }
-
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("User:");
+        final StringBuilder sb = new StringBuilder("UserModel:");
         sb.append("email=").append(email).append(System.lineSeparator());
         sb.append("password=").append(password).append(System.lineSeparator());
         sb.append("firstName=").append(firstName).append(System.lineSeparator());

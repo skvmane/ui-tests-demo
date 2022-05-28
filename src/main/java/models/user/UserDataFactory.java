@@ -15,13 +15,13 @@ public class UserDataFactory {
         faker = new Faker(new Locale(getConfiguration().fakerLocale()));
     }
 
-    public User create() {
-        User user = User.builder(faker.internet().emailAddress(), faker.internet().password(5, 10))
+    public UserModel getDefaultUser() {
+        UserModel user = UserModel.builder(faker.internet().emailAddress(), faker.internet().password(5, 10))
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName())
                 .dayOfBirth(faker.number().numberBetween(1, 28))
-                .monthOfBirth(faker.number().numberBetween(1,12))
-                .yearOfBirth(faker.number().numberBetween(20,30))
+                .monthOfBirth(faker.number().numberBetween(1, 12))
+                .yearOfBirth(faker.number().numberBetween(20, 30))
                 .company(faker.commerce().department())
                 .addressMain(faker.address().fullAddress())
                 .addressSecond(faker.address().secondaryAddress())
@@ -30,12 +30,11 @@ public class UserDataFactory {
                 .additionalInfo(faker.chuckNorris().fact())
                 .phone(faker.numerify("+1-###-###-####"))
                 .phoneMobile(faker.phoneNumber().cellPhone())
-                .state(faker.number().numberBetween(2,10))
-                .country(faker.number().numberBetween(1,1))
+                .state(faker.number().numberBetween(2, 10))
+                .country(faker.number().numberBetween(1, 1))
                 .addressAlias("My address # " + faker.number().randomNumber())
                 .build();
         log.info(String.format("Created userdata: %n%s%n", user));
         return user;
     }
-
 }

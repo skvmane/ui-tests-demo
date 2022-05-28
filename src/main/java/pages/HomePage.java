@@ -7,23 +7,19 @@ import org.openqa.selenium.support.FindBy;
 import pages.common.BasePage;
 
 public class HomePage extends BasePage {
+    @FindBy(xpath = "//a[contains(text(), 'Sign in')]")
+    private WebElement signInButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath = "//img[@alt='My Store']")
-    private WebElement logo;
-
-    @FindBy(css = ".login")
-    private WebElement signInButton;
-
     @Override
     public boolean pageIsDisplayed() {
-        return logo.isDisplayed();
+        return driver.getCurrentUrl().endsWith("index.php");
     }
 
-    @Step(value = "Click on Sign In button")
+    @Step("Click on Sign In button")
     public void clickOnSignInButton() {
         click(signInButton);
     }

@@ -26,8 +26,4 @@ public abstract class BaseTest {
     public void teardown() {
         DriverManager.removeDriver();
     }
-
-    public WebDriver getDriver() {
-        return driver;
-    }
 }

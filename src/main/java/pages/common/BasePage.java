@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import services.AbstractServicePage;
 
 public abstract class BasePage extends AbstractServicePage {
-
     private Footer footer;
 
     public BasePage(WebDriver driver) {
@@ -15,5 +14,4 @@ public abstract class BasePage extends AbstractServicePage {
     public Footer getFooter() {
         return footer;
     }
-
 }

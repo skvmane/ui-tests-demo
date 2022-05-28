@@ -12,14 +12,12 @@ import static config.ConfigManager.getConfiguration;
 
 @Log4j2
 public class DriverOptionsFactory implements AbstractFactory<AbstractDriverOptions, String> {
-
     static final String START_MAXIMIZED = "--start-maximized";
 
     @Override
     public AbstractDriverOptions create(String browser) {
         try {
             Browser browserType = Browser.valueOf(browser.toUpperCase());
-
             switch (browserType) {
                 case CHROME:
                     return getChromeOptions();
@@ -36,12 +34,10 @@ public class DriverOptionsFactory implements AbstractFactory<AbstractDriverOptio
         return null;
     }
 
-
     private ChromeOptions getChromeOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(getConfiguration().headless());
         chromeOptions.addArguments(START_MAXIMIZED);
-
         return chromeOptions;
     }
 
@@ -49,7 +45,6 @@ public class DriverOptionsFactory implements AbstractFactory<AbstractDriverOptio
         FirefoxOptions ffOptions = new FirefoxOptions();
         ffOptions.setHeadless(getConfiguration().headless());
         ffOptions.addArguments(START_MAXIMIZED);
-
         return ffOptions;
     }
 
@@ -57,8 +52,6 @@ public class DriverOptionsFactory implements AbstractFactory<AbstractDriverOptio
         EdgeOptions edgeOptions = new EdgeOptions();
         edgeOptions.setHeadless(getConfiguration().headless());
         edgeOptions.addArguments(START_MAXIMIZED);
-
         return edgeOptions;
     }
-
 }

@@ -22,7 +22,6 @@ public class DriverFactory implements AbstractFactory<WebDriver, String> {
         try {
             Browser browserType = Browser.valueOf(browser.toUpperCase());
             AbstractDriverOptions driverOptions = new DriverOptionsFactory().create(browser);
-
             switch (browserType) {
                 case CHROME:
                     WebDriverManager.getInstance(DriverManagerType.CHROME).setup();
@@ -41,5 +40,4 @@ public class DriverFactory implements AbstractFactory<WebDriver, String> {
         }
         return null;
     }
-
 }

@@ -1,63 +1,58 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.common.BasePage;
 
+import java.util.List;
+
 public class AuthenticationPage extends BasePage {
+    @FindBy(xpath = "//div/h1[text()='Authentication']")
+    private WebElement pageHeader;
+    @FindBy(xpath = "//div[contains(@class, 'alert')]//ol/li")
+    private List<WebElement> authErrors;
 
     public AuthenticationPage(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(xpath = "//div/h1[text()='Authentication']")
-    private WebElement pageHeader;
-
-    @FindBy(id = "email")
-    private WebElement signInEmail;
-
-    @FindBy(id = "email_create")
-    private WebElement createEmail;
-
-    @FindBy(id = "passwd")
-    private WebElement signPassword;
-
-    @FindBy(id = "SubmitLogin")
-    private WebElement submitLogin;
-
-    @FindBy(id = "SubmitCreate")
-    private WebElement submitCreate;
 
     @Override
     public boolean pageIsDisplayed() {
         return pageHeader.isDisplayed();
     }
 
-    @Step(value = "Fill email field with {0} to sign in")
-    public void fillEmailToSignIn(String email) {
-        writeText(signInEmail, email);
+    public WebElement getInput(String inputId) {
+        String path = String.format("//input[@id='%s']", inputId);
+        return driver.findElement(By.xpath(path));
     }
 
-    @Step(value = "Fill password field with {0} to sign in")
-    public void fillPassword(String password) {
-        writeText(signPassword, password);
+    public WebElement getButton(String buttonName) {
+        String path = String.format("//button[contains(@name, '%s')]", buttonName);
+        return driver.findElement(By.xpath(path));
     }
 
-    @Step(value = "Click on submit login button")
-    public void clickOnSubmitButton() {
-        click(submitLogin);
+    @Step("Fill input {0} with {1}")
+    public AuthenticationPage setInput(String inputId, String inputValue) {
+        writeText(getInput(inputId), inputValue);
+        return this;
     }
 
-    @Step(value = "Fill email field with {0} to create account")
-    public void fillEmailToCreate(String email) {
-        writeText(createEmail, email);
+    @Step("Click on {0} button")
+    public void clickOnSubmitButton(String buttonName) {
+        click(getButton(buttonName));
     }
 
-    @Step(value = "Click on create button")
-    public void clickOnCreateButton() {
-        click(submitCreate);
+    @Step("Check for auth error")
+    public boolean authErrorIsDisplayed() {
+        return authErrors.stream().anyMatch(s -> s.getText().contains("Authentication failed"));
     }
 
+    @Step("Check is password masked")
+    public boolean isPassMasked() {
+        return getInput("passwd").getAttribute("type")
+                .equals("password");
+    }
 }

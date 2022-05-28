@@ -13,7 +13,6 @@ import java.time.Duration;
 import static config.ConfigManager.getConfiguration;
 
 public abstract class AbstractServicePage {
-
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -21,28 +20,23 @@ public abstract class AbstractServicePage {
         this.driver = driver;
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, getConfiguration().timeout());
         PageFactory.initElements(factory, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public abstract boolean pageIsDisplayed();
 
-    //Click
     public void click(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
-    //Enter text
     public void writeText(WebElement element, String text) {
         element.clear();
         element.sendKeys(text);
     }
 
-    //Select element from dropdown
     public void selectByIndex(WebElement element, int index) {
         Select dropdown = new Select(element);
         dropdown.selectByIndex(index);
     }
-
-
 }

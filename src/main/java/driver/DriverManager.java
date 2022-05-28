@@ -20,6 +20,4 @@ public class DriverManager {
         getDriver().quit();
         DRIVER.remove();
     }
-
-
 }

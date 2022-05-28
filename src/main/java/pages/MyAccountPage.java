@@ -7,22 +7,20 @@ import org.openqa.selenium.support.FindBy;
 import pages.common.BasePage;
 
 public class MyAccountPage extends BasePage {
+    @FindBy(xpath = "//div/a[contains(text(), 'Sign out')]")
+    private WebElement signOutButton;
 
     public MyAccountPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(css = ".logout")
-    private WebElement signOutButton;
-
     @Override
     public boolean pageIsDisplayed() {
-        return signOutButton.isDisplayed();
+        return driver.getCurrentUrl().endsWith("my-account");
     }
-    
-    @Step(value = "Click on Sign Out button")
+
+    @Step("Click on Sign Out button")
     public void clickOnSignOutButton() {
         click(signOutButton);
     }
-
 }

@@ -13,11 +13,6 @@ import static config.ConfigManager.getConfiguration;
 
 @Log4j2
 public class TargetFactory {
-
-    enum Target {
-        LOCAL, REMOTE
-    }
-
     public WebDriver createInstance(String browser) {
         try {
             WebDriver driver;
@@ -53,5 +48,9 @@ public class TargetFactory {
             log.error("Invalid remote host URL");
         }
         return null;
+    }
+
+    enum Target {
+        LOCAL, REMOTE
     }
 }
