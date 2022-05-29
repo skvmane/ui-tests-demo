@@ -12,13 +12,23 @@ UI Automation framework written on Java with [Selenium WebDriver](https://www.se
 
 ## Preconditions
 ### Windows
-1. [Install Java 8 or higher on your local machine] (https://java.com/en/download/) and [Set the JAVA_HOME Environment Variable] (https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
+1. [Install Java 8 or higher on your local machine](https://java.com/en/download/) and [set the JAVA_HOME Environment Variable](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
 2. [Install Apache Maven] (https://maven.apache.org/install.html)
+### MacOS
+TBD
+
+## Run tests from IDE
+1. [Install IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE
+2. Install Lombok Plugin: `IntelliJ IDEA > Preferences > Plugins > Browse repositories > Lombok Plugin`
+3. Enable annotation processing: `IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Annotation Processors > Enable annotation processing`
+4. Checkout project from git
+5. Start import as Maven project
+6. Go to the `src/test/resources/test.xml` , open context menu and click `Run`
+
+## Run tests using command line
+1. Download project files from git
+Go to the checkout folder using cd java-api-test-demo
+Start test using command for Windows: gradlew clean test for macOS: ./gradlew clean test
+After test finished to generate the report using next command for Windows gradlew allureReport && gradlew allureServe for macOS: ./gradlew allureReport && ./gradlew allureServe
 
 
-
-
-
-## Run tests
-The test cases are located in the `test_suites` directory. They can be executed from terminal using `robot` command:
->robot calc_demo_suite.robot
