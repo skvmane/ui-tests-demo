@@ -10,9 +10,9 @@ import providers.UserModelProvider;
 public class NewsletterTests extends BaseTest {
     @Epic("Newsletter")
     @Story("Successful newsletter subscription")
-    @Test(dataProvider = "HP-1",
+    @Test(dataProvider = "getDefaultUser",
             dataProviderClass = UserModelProvider.class,
-            testName = "Newsletter successful subscription")
+            testName = "HP-1")
     public void successfulSubscription(UserModel user) {
         new SubscribeFeature(user).subscribe();
     }
