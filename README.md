@@ -23,12 +23,12 @@ TBD
 3. Enable annotation processing: `IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Annotation Processors > Enable annotation processing`
 4. Checkout project from git `IntelliJ IDEA > File > New > Project from VC`
 5. Start import as Maven project
-6. Go to the `src/test/resources/test.xml` , open context menu and click `Run`
+6. Go to the root folder of the project, open context menu on file `test.xml` and click `Run`
 
-## Run tests using command line
-1. Download project files from git
-Go to the checkout folder using cd java-api-test-demo
-Start test using command for Windows: gradlew clean test for macOS: ./gradlew clean test
-After test finished to generate the report using next command for Windows gradlew allureReport && gradlew allureServe for macOS: ./gradlew allureReport && ./gradlew allureServe
-
-
+## Run tests using command line (Windows)
+1. Download project files from git `Code > Download ZIP`
+2. Unzip folder `ui-tests-demo-master`
+3. Open command line
+4. Proceed to the `ui-tests-demo-master` folder using `cd .....\ui-tests-demo-master`  
+5. Start test using command `mvn clean test -DsuiteXmlFile=test.xml`
+6. After test finished, generate the report using command `allure serve .....\ui-tests-demo-master\target\allure-results`
