@@ -13,7 +13,7 @@ UI Automation framework written on Java with [Selenium WebDriver](https://www.se
 ## Preconditions
 ### Windows
 1. [Install Java 8 or higher on your local machine](https://java.com/en/download/) and [set the JAVA_HOME Environment Variable](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
-2. [Install Apache Maven] (https://maven.apache.org/install.html)
+2. [Install Apache Maven](https://maven.apache.org/install.html)
 ### MacOS
 TBD
 
@@ -21,7 +21,7 @@ TBD
 1. [Install IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE
 2. Install Lombok Plugin: `IntelliJ IDEA > Preferences > Plugins > Browse repositories > Lombok Plugin`
 3. Enable annotation processing: `IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Annotation Processors > Enable annotation processing`
-4. Checkout project from git `IntelliJ IDEA > File > New > Project from VC
+4. Checkout project from git `IntelliJ IDEA > File > New > Project from VC`
 5. Start import as Maven project
 6. Go to the `src/test/resources/test.xml` , open context menu and click `Run`
 
