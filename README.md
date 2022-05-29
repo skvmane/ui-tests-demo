@@ -1,7 +1,7 @@
 # ui-tests-demo
 
 ## Project details:
-UI Automation framework written on Java with [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/). The framework also supports such libraries as:
+UI Test Automation framework written on Java with [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/). The framework also supports such libraries as:
 - [WebDriverManager](https://github.com/bonigarcia/webdrivermanager) - carries out the management (i.e., download, setup) of the drivers required by Selenium WebDriver
 - [TestNG](https://testng.org/doc/) - testing framework
 - [Owner](https://github.com/matteobaccan/owner) - property reader
