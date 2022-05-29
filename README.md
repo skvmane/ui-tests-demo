@@ -21,7 +21,7 @@ TBD
 1. [Install IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE
 2. Install Lombok Plugin: `IntelliJ IDEA > Preferences > Plugins > Browse repositories > Lombok Plugin`
 3. Enable annotation processing: `IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Annotation Processors > Enable annotation processing`
-4. Checkout project from git
+4. Checkout project from git `IntelliJ IDEA > File > New > Project from VC
 5. Start import as Maven project
 6. Go to the `src/test/resources/test.xml` , open context menu and click `Run`
 
